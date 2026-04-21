@@ -1,21 +1,27 @@
 <?php
 
+require_once __DIR__ . '/../models/Order.php';
+require_once __DIR__ . '/../models/Customer.php';
+require_once __DIR__ . '/../../db/DB.php';
+
 class OrderController
 {
     public static function index($status = null)
-{
-    $sql = "
-        SELECT o.*, c.first_name, c.last_name
-        FROM orders o
-        JOIN customers c ON o.customer_id = c.id
-    ";
-
-    if ($status) {
-        $sql .= " WHERE o.status = '" . $status . "'";
+    {
+        $orders = Order::all($status);
+        require __DIR__ . '/../views/orders.php';
     }
 
-    $orders = DB::query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    public static function create()
+    {
+        $customers = Customer::all();
+        require __DIR__ . '/../views/orders_create.php';
+    }
 
-    require __DIR__ . '/../views/orders.php';
-}
+    public static function store($data)
+    {
+        Order::create($data);
+        header("Location: /orders");
+        exit;
+    }
 }
