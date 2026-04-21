@@ -8,7 +8,6 @@ DB::connect();
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if ($requestUri === '/customers') {
-    CustomerController::index();
-} else {
-    echo "<h1>Veikals</h1>";
+    $withOrders = $_GET['with-orders'] ?? null;
+    CustomerController::index($withOrders);
 }
