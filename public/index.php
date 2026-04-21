@@ -39,3 +39,7 @@ if ($requestUri === '/orders/create') {
 if ($requestUri === '/orders/store') {
     OrderController::store($_POST);
 }
+
+if ($requestUri === '/orders/delete') {
+    OrderController::delete($_GET['id']);
+}

@@ -24,4 +24,12 @@ class OrderController
         header("Location: /orders");
         exit;
     }
+
+    public static function delete($id)
+{
+    DB::query("DELETE FROM orders WHERE id = " . (int)$id);
+
+    header("Location: /orders");
+    exit;
+}
 }
