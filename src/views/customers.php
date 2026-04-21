@@ -1,3 +1,5 @@
+<?php require __DIR__ . '/partials/nav.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
