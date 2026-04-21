@@ -17,3 +17,14 @@ if ($requestUri === '/orders') {
     $status = $_GET['status'] ?? null;
     OrderController::index($status);
 }
+
+if ($requestUri === '/') {
+
+    $customersCount = DB::query("SELECT COUNT(*) AS count FROM customers")
+        ->fetch()['count'];
+
+    $ordersCount = DB::query("SELECT COUNT(*) AS count FROM orders")
+        ->fetch()['count'];
+
+    require __DIR__ . '/../src/views/home.php';
+}
