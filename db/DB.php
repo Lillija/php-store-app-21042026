@@ -6,7 +6,15 @@ class DB
 
     public static function connect()
     {
-        self::$pdo = new PDO("mysql:host=192.168.208.1;dbname=store_dev", "store_app", "password");
+        $host = '192.168.208.1';
+        $dbname = 'store_dev';
+
+        self::$pdo = new PDO(
+            "mysql:host=$host;dbname=$dbname;charset=utf8",
+            "store_app",
+            "password"
+        );
+
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
