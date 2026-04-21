@@ -1,17 +1,19 @@
 <?php require __DIR__ . '/partials/nav.php'; ?>
 
+<link rel="stylesheet" href="/assets/style.css">
+
 <h1>Create Order</h1>
 
 <form method="POST" action="/orders/store">
 
     <label>Customer:</label>
-    <select name="customer_id">
-        <?php foreach ($customers as $c): ?>
-            <option value="<?= $c['id'] ?>">
-                <?= $c['first_name'] . ' ' . $c['last_name'] ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+    <select name="customer_id" required>
+    <?php foreach ($customers as $c): ?>
+        <option value="<?= $c->id ?>">
+            <?= $c->first_name . ' ' . $c->last_name ?>
+        </option>
+    <?php endforeach; ?>
+</select>
 
     <br><br>
 
