@@ -1,10 +1,12 @@
 <?php
 
+require_once __DIR__ . '/../../db/DB.php';
+
 class CustomerController
 {
-    public static function index($pdo)
+    public static function index()
     {
-        $stmt = $pdo->query("SELECT * FROM customers");
+        $stmt = DB::query("SELECT * FROM customers");
         $customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         echo "<h1>Customers</h1>";
